@@ -33,35 +33,46 @@ function init() {
 
 // 表示を更新
 function refresh() {
-  // 先頭の0を取る
-  while (current.charAt(0)==="0" && current.charAt(1)!==".") current=current.slice(1);
-  if (current === "") current = "0";
-  
-  // 表示
-  
   // --スタック領域
-  // カンマ区切りにする
-  var stack2 = stack.map(value => Number(value).toLocaleString(undefined, { maximumFractionDigits: 20 }));
+  // 変換
+  var stack2 = stack.map(value => convert(value));
   // 結合
   str = stack2.join("<br>");
   // スタック最後の改行
   if (stack.length > 0) str += "<br>";
 
   // --最新行
-  var current_line = Number(current).toLocaleString(undefined, { maximumFractionDigits: 20 });
-  // 小数点入力中なら末尾に.を付ける
-  if (current.charAt(current.length-1) === ".") current_line += ".";
+  // 変換
+  var current_line = convert(current);
   // 入力受付中なら下線付きで表示
   if (input_flag) {
     current_line = "<u>" + current_line + "</u>";
   }
-
   str += current_line;
 
-  // 画面に反映
+  // --画面に反映
   var elem_stack = document.getElementById("stack");
   elem_stack.innerHTML = str;
   elem_stack.scrollTo(0, elem_stack.scrollHeight);
+}
+
+// 文字列を適切な数値表現に変換する
+function convert(str) {
+  // 整数部と小数部に分ける
+  var i = str.split(".")[0];
+  var d = str.split(".")[1];
+  // 整数部を','付き文字列にする
+  var result = Number(i).toLocaleString(undefined, { maximumFractionDigits: 20 });
+  
+  if (d) {
+    // 小数部があれば付ける
+    result += "." + d;
+  } else if (str.charAt(str.length-1) === ".") {
+    // 小数点入力中なら末尾に.を付ける
+    result += ".";
+  }
+
+  return result;
 }
 
 // 数字や記号を入力する
@@ -87,6 +98,9 @@ function clear() {
 
 // スタックにプッシュする
 function push() {
+  // 末尾が小数点なら取り除く
+  if (current.charAt(current.length-1) === ".") current = current.slice(0,-1);
+
   stack.push(current);
   clear();
 }
