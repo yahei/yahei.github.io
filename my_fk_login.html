@@ -11,14 +11,13 @@
     <title>My First Card 非公式ログインページ</title>
     <link href="https://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
     <link href="fonts.css" rel="stylesheet">
-    <script language="javascript" src="./my_fk_login.js"></script>
     
     <script language="javascript" src="https://www.vcsys.com/s/first-kitchen/js/kumu.js"></script>
     <script language="javascript" src="https://www.vcsys.com/s/first-kitchen/js/common.js"></script>
   </head>
 
-  <body onload="load();">
-    <form method="post" action="https://www.vcsys.com/s/first-kitchen/p/login" onsubmit="save();">
+  <body>
+    <form method="get" action="./my_fk_login2.html">
       <div class="container" style="text-align: center;">
         <h2>My First Card</h2>
         
@@ -26,7 +25,7 @@
         
         <!-- エラー表示 -->
         <div id="errors" class="error"></div>
-        <div class="frmArea" style="border: solid 1px; margin: auto; padding: 30px; width: 300px;">
+        <div class="frmArea" style="border: solid 1px; margin: auto; ">
           
           カード番号（半角数字16桁）<br>
           <input type="text" name="cardId1" value="" size="8" maxlength="4" onkeyup="cardIdInputHelp(this.value, 'cardId2')" style="width:35px" id="cardId1" class="ime-disabled" />
@@ -42,10 +41,16 @@
           <input type="password" name="cardPin" size="8" maxlength="6" class="ime-disabled" value="" id="cardPin"/>
           <!-- ボタン -->
           <div>
-            <input type="submit" value="ログイン" name="kind" class="button" style="margin: 10px; width:100px;" />
-            <input type="reset" value="クリア" name="kind" class="button"  style="margin: 10px; width:100px;" />
+            <input type="submit" value="次へ" class="button" style="margin: 10px; width:80px;" />
+            <input type="reset" value="クリア" class="button"  style="margin: 10px; width:80px;" />
           </div>
           
+        </div>
+        
+        <br>
+        <div>
+          次のページをブックマークすることで<br>
+          入力内容を記憶しておけます。<br>
         </div>
         
         <!-- お知らせ -->
