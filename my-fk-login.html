@@ -8,16 +8,17 @@
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>My First Card 非公式ログインページ</title>
+    <title>My First Card 残高照会</title>
     <link href="https://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
     <link href="fonts.css" rel="stylesheet">
+    <script language="javascript" src="./my-fk-login.js"></script>
     
     <script language="javascript" src="https://www.vcsys.com/s/first-kitchen/js/kumu.js"></script>
     <script language="javascript" src="https://www.vcsys.com/s/first-kitchen/js/common.js"></script>
   </head>
 
   <body>
-    <form method="get" action="./my_fk_login2.html">
+    <form method="get" action="./fk.html" onsubmit="joinID();">
       <div class="container" style="text-align: center;">
         <h2>My First Card</h2>
         
@@ -38,8 +39,12 @@
           <input type="text" name="cardId4" value="" size="8" maxlength="4" onkeyup="cardIdInputHelp(this.value, 'cardPin')" style="width:35px" id="cardId4" class="ime-disabled" />
           <br>
           <br>
+
+          <!-- 結合したIDを送るための隠しinput -->
+          <input type="hidden" name="i" id="joinedID" />
+
           PIN番号（半角数字6桁）<br>
-          <input type="password" name="cardPin" size="8" maxlength="6" class="ime-disabled" value="" id="cardPin"/>
+          <input type="password" name="p" size="8" maxlength="6" class="ime-disabled" value="" id="cardPin"/>
           <!-- ボタン -->
           <div>
             <input type="submit" value="次へ" class="button" style="margin: 10px; width: 100px;" />
