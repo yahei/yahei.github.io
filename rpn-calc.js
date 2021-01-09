@@ -108,28 +108,28 @@ function push() {
 // 四則演算
 function plus() {
   if (stack.length < 1) retrun;
-  current = '' + (Number(stack.pop()) + Number(current));
+  current = '' + (BigNumber(stack.pop()).plus(BigNumber(current)));
   input_flag = false;
   refresh();
 }
 
 function minus() {
   if (stack.length < 1) retrun;
-  current = '' + (Number(stack.pop()) - Number(current));
+  current = '' + (BigNumber(stack.pop()).minus(BigNumber(current)));
   input_flag = false;
   refresh();
 }
 
 function mul() {
   if (stack.length < 1) retrun;
-  current = '' + (Number(stack.pop()) * Number(current));
+  current = '' + (BigNumber(stack.pop()).mul(BigNumber(current)));
   input_flag = false;
   refresh();
 }
 
 function div() {
   if (stack.length < 1) retrun;
-  current = '' + (Number(stack.pop()) / Number(current));
+  current = '' + (BigNumber(stack.pop()).div(BigNumber(current)));
   input_flag = false;
   refresh();
 }
