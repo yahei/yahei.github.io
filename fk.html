@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My First Card 残高照会</title>
+    <link href="https://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+    <link href="fonts.css" rel="stylesheet">
+    <script language="javascript" src="./my-fk-login.js"></script>
+    
+    <script language="javascript" src="https://www.vcsys.com/s/first-kitchen/js/kumu.js"></script>
+    <script language="javascript" src="https://www.vcsys.com/s/first-kitchen/js/common.js"></script>
+  </head>
+
+  <body onload="getParams();">
+    <form method="post" action="https://www.vcsys.com/s/first-kitchen/p/login">
+      <div class="container" style="text-align: center;">
+        <h2>My First Card</h2>
+        
+        <!-- ログインフォーム -->
+        
+        <!-- エラー表示 -->
+        <div id="errors" class="error"></div>
+        <div class="frmArea" style="border: solid 1px; margin: auto; max-width: 300px;">
+          <br>
+          
+          カード番号（半角数字16桁）<br>
+          <input type="text" name="cardId1_v" value="" size="8" maxlength="4" style="width:35px" id="cardId1_v" class="ime-disabled" disabled />
+          -
+          <input type="text" name="cardId2_v" value="" size="8" maxlength="4" style="width:35px" id="cardId2_v" class="ime-disabled" disabled />
+          -
+          <input type="text" name="cardId3_v" value="" size="8" maxlength="4" style="width:35px" id="cardId3_v" class="ime-disabled" disabled />
+          -
+          <input type="text" name="cardId4_v" value="" size="8" maxlength="4" style="width:35px" id="cardId4_v" class="ime-disabled" disabled />
+          <br>
+          <br>
+          PIN番号（半角数字6桁）<br>
+          <input type="password" name="cardPin_v" size="8" maxlength="6" class="ime-disabled" value="" id="cardPin_v" disabled />
+          
+          <!-- readonlyは見た目が編集できそうで、disableは内容が送信されないので、hiddenでreadonly要素を置いておく -->
+          <input type="hidden" name="cardId1" id="cardId1">
+          <input type="hidden" name="cardId2" id="cardId2">
+          <input type="hidden" name="cardId3" id="cardId3">
+          <input type="hidden" name="cardId4" id="cardId4">
+          <input type="hidden" name="cardPin" id="cardPin">
+
+          <!-- ボタン -->
+          <div>
+            <input type="submit" value="ログイン" name="kind" class="button" style="margin: 10px;" />
+          </div>
+          
+          <br>
+        </div>
+
+        <!-- お知らせ -->
+        <div id="isInfoExists"></div>
+        
+      </div>
+    </form>
+    
+    <br>
+    <br>
+    <a href="index.html">Top Page</a>
+  </body>
+</html>
