@@ -62,7 +62,7 @@ function convert(str) {
   var i = str.split(".")[0];
   var d = str.split(".")[1];
   // 整数部を','付き文字列にする
-  var result = Number(i).toLocaleString(undefined, { maximumFractionDigits: 20 });
+  var result = BigNumber(i).toFormat(0);
   
   if (d) {
     // 小数部があれば付ける
@@ -136,7 +136,7 @@ function div() {
 
 // 平方根
 function root() {
-  current = '' + (Math.sqrt(Number(current)));
+  current = BigNumber(current).sqrt().toString();
   input_flag = false;
   refresh();
 }
@@ -153,6 +153,6 @@ function swap() {
 
 // 符号を反転する
 function inversion() {
-  current = ''+ (-current);
+  current = BigNumber(current).negated().toString();
   refresh();
 }
